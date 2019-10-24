@@ -2,8 +2,8 @@ import instaloader
 
 # Get instance
 L = instaloader.Instaloader()
-USER = "sf_bp16"
-PROFILE = "shagunina"
+USER = "self_user"
+PROFILE = "user"
 # Login or load session
 #L.login(USER, PASSWORD)        # (login)
 L.interactive_login(USER)      # (ask password on terminal)
