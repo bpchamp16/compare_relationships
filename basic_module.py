@@ -4,7 +4,7 @@ import os.path
 
 
 OUTPUT_RESULT = "/output"
-USER = ""
+USER = "sf_bp16"
 PROFILE = ""
 
 
@@ -22,7 +22,7 @@ def createOutputDir():
 
 # function to create ouput file
 def createOutputFile(list_name):
-    file = open(f"{path}/{name}.txt", "a+")
+    file = open(f"output/compare.txt", "a+")
     for i in list_name:
         file.write(i + '\n')
 
@@ -40,15 +40,21 @@ def getListFollowings(name):
 def getListCompareUsers(name1, name2):
     followings1 = getListFollowings(name1)
     followings2 = getListFollowings(name2)
+    s1 = set(followings1)
+    s2 = set(followings2)
+    s3 = s1 & s2
+    return s3
 
 ###         MAIN LOGIC         ###
-if os.path.exists(path):
+if os.path.exists(OUTPUT_RESULT):
     print("Output folder already exists")
 else:
     createOutputDir()
 
 L = instaloader.Instaloader()
-L.interactive_login(USER) 
+L.interactive_login(USER)
 
+done_list = getListCompareUsers("saygashkina_victoria","zolotovvva")
+createOutputFile(done_list)
 
 print("Successfully exited from writing.")
