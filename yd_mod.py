@@ -3,12 +3,11 @@ import os
 import os.path
 
 
-OUTPUT_RESULT = "/output"
-USER = "sf_bp16"
-PROFILE = ""
-
-
 # function to create output dir
+def do_auth(name)
+    L = instaloader.InstaLoader()
+    L.interactive_login(name)
+
 def createOutputDir():
     path = os.getcwd()
     path = path + OUTPUT_RESULT
@@ -45,16 +44,6 @@ def getListCompareUsers(name1, name2):
     s3 = s1 & s2
     return s3
 
-###         MAIN LOGIC         ###
-if os.path.exists(OUTPUT_RESULT):
-    print("Output folder already exists")
-else:
-    createOutputDir()
 
-L = instaloader.Instaloader()
-L.interactive_login(USER)
 
-done_list = getListCompareUsers("saygashkina_victoria","zolotovvva")
-createOutputFile(done_list)
 
-print("Successfully exited from writing.")
